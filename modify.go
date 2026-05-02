@@ -26,6 +26,7 @@ func Modify(c *cli.Context) error {
 		return IdNotFound
 	}
 	item.Content = c.String("content")
+	item.Description = c.String("description")
 	item.Priority = priorityMapping[c.Int("priority")]
 	if labelNames := c.String("label-names"); labelNames != "" {
 		stringNames := strings.Split(labelNames, ",")

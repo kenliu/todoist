@@ -65,6 +65,7 @@ type Item struct {
 	HaveSectionID
 	ChildItem      *Item       `json:"-"`
 	BrotherItem    *Item       `json:"-"`
+	Description    string      `json:"description"`
 	AllDay         bool        `json:"all_day"`
 	AssignedByUID  string      `json:"assigned_by_uid"`
 	Checked        bool        `json:"checked"`
@@ -173,6 +174,9 @@ func (item Item) AddParam() interface{} {
 	if item.SectionID != "" {
 		param["section_id"] = item.SectionID
 	}
+	if item.Description != "" {
+		param["description"] = item.Description
+	}
 	param["auto_reminder"] = item.AutoReminder
 
 	return param
@@ -201,6 +205,9 @@ func (item Item) UpdateParam() interface{} {
 	}
 	if item.Due != nil {
 		param["due"] = item.Due
+	}
+	if item.Description != "" {
+		param["description"] = item.Description
 	}
 	return param
 }
