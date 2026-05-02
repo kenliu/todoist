@@ -169,3 +169,4 @@ Key dependencies (from go.mod):
 - Date handling supports multiple formats: RFC3339, natural language (via Todoist API), and custom filter syntax
 - Filter syntax supports: `#Project`, `##Project` (include children), `@Label`, `p1`-`p4`, date expressions
 - Shell integration files: `todoist_functions.sh` (peco), `todoist_functions_fzf.sh` (fzf)
+- **OpenAPI Specification**: The full Todoist API v1 OpenAPI spec is available at `https://developer.todoist.com/openapi.json` and saved locally as `todoist-openapi.json` in the repository root. This can be used for code generation, documentation, and API tool integrations.
