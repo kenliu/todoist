@@ -170,3 +170,4 @@ Key dependencies (from go.mod):
 - Filter syntax supports: `#Project`, `##Project` (include children), `@Label`, `p1`-`p4`, date expressions
 - Shell integration files: `todoist_functions.sh` (peco), `todoist_functions_fzf.sh` (fzf)
 - **OpenAPI Specification**: The full Todoist API v1 OpenAPI spec is available at `https://developer.todoist.com/openapi.json` and saved locally as `todoist-openapi.json` in the repository root. This can be used for code generation, documentation, and API tool integrations.
+- When adding new command-line flags, watch out for UX problems: very similar flag names, upper/lowercase collisions, and conflicts with existing flags that could confuse users
