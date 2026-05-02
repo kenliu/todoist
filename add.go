@@ -60,6 +60,8 @@ func Add(c *cli.Context) error {
 		item.SectionID = c.String("section-id")
 	}
 
+	item.Description = c.String("description")
+
 	item.Due = &todoist.Due{String: c.String("date")}
 
 	item.AutoReminder = c.Bool("reminder")

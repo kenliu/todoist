@@ -34,6 +34,7 @@ func Show(c *cli.Context) error {
 	records := [][]string{
 		[]string{"ID", IdFormat(item)},
 		[]string{"Content", ContentFormat(item)},
+		[]string{"Description", item.Description},
 		[]string{"Project", ProjectFormat(item.ProjectID, client.Store, projectColorHash, c)},
 		[]string{"Section", SectionFormat(item.SectionID, client.Store, c)},
 		[]string{"Labels", item.LabelsString()},
