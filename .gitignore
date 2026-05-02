@@ -5,3 +5,6 @@ todoist
 
 _vendor-*
 vendor
+
+# Downloaded API specifications
+todoist-openapi.json
