@@ -111,6 +111,14 @@ func main() {
 		Aliases: []string{"r"},
 		Usage:   "set reminder (only premium users)",
 	}
+	sectionIDFlag := cli.StringFlag{
+		Name:  "section-id",
+		Usage: "section id",
+	}
+	sectionNameFlag := cli.StringFlag{
+		Name:  "section-name",
+		Usage: "section name",
+	}
 
 	app.Flags = []cli.Flag{
 		&cli.BoolFlag{
@@ -290,6 +298,8 @@ func main() {
 				&labelNamesFlag,
 				&projectIDFlag,
 				&projectNameFlag,
+				&sectionIDFlag,
+				&sectionNameFlag,
 				&dateFlag,
 				&reminderFlg,
 			},
@@ -306,6 +316,8 @@ func main() {
 				&labelNamesFlag,
 				&projectIDFlag,
 				&projectNameFlag,
+				&sectionIDFlag,
+				&sectionNameFlag,
 				&dateFlag,
 			},
 			ArgsUsage: "<Item ID>",
@@ -352,6 +364,77 @@ func main() {
 				},
 			},
 			ArgsUsage: "<Project name>",
+		},
+		{
+			Name:      "sections",
+			Usage:     "Manage sections",
+			Action:    Sections,
+			ArgsUsage: " ",
+			Subcommands: []*cli.Command{
+				{
+					Name:   "list",
+					Usage:  "Show all sections",
+					Action: Sections,
+					ArgsUsage: " ",
+				},
+				{
+					Name:   "add",
+					Usage:  "Add new section",
+					Action: AddSection,
+					Flags: []cli.Flag{
+						&projectIDFlag,
+						&projectNameFlag,
+					},
+					ArgsUsage: "<Section name>",
+				},
+				{
+					Name:      "delete",
+					Usage:     "Delete a section",
+					Action:    DeleteSection,
+					ArgsUsage: "<Section ID>",
+				},
+				{
+					Name:      "archive",
+					Usage:     "Archive a section",
+					Action:    ArchiveSection,
+					ArgsUsage: "<Section ID>",
+				},
+				{
+					Name:      "unarchive",
+					Usage:     "Unarchive a section",
+					Action:    UnarchiveSection,
+					ArgsUsage: "<Section ID>",
+				},
+				{
+					Name:   "update",
+					Usage:  "Update section name",
+					Action: UpdateSection,
+					Flags: []cli.Flag{
+						&cli.StringFlag{
+							Name:  "name",
+							Usage: "new section name",
+						},
+					},
+					ArgsUsage: "<Section ID>",
+				},
+				{
+					Name:   "move",
+					Usage:  "Move section to another project",
+					Action: MoveSection,
+					Flags: []cli.Flag{
+						&projectIDFlag,
+						&projectNameFlag,
+					},
+					ArgsUsage: "<Section ID>",
+				},
+				{
+					Name:      "reorder",
+					Usage:     "Reorder sections by specifying section IDs in the desired order",
+					Action:    ReorderSections,
+					ArgsUsage: "<Section ID> <Section ID> ...",
+					Description: "Reorder sections within a project. The sections will be arranged in the\norder you specify. Requires at least 2 section IDs.\n\nExample: todoist sections reorder <id1> <id2> <id3>",
+				},
+			},
 		},
 		{
 			Name:      "karma",
