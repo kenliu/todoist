@@ -119,6 +119,10 @@ func main() {
 		Name:  "section-name",
 		Usage: "section name",
 	}
+	descriptionFlag := cli.StringFlag{
+		Name:  "description",
+		Usage: "task description",
+	}
 
 	app.Flags = []cli.Flag{
 		&cli.BoolFlag{
@@ -302,6 +306,7 @@ func main() {
 				&sectionNameFlag,
 				&dateFlag,
 				&reminderFlg,
+				&descriptionFlag,
 			},
 			ArgsUsage: "<Item content>",
 		},
@@ -319,6 +324,7 @@ func main() {
 				&sectionIDFlag,
 				&sectionNameFlag,
 				&dateFlag,
+				&descriptionFlag,
 			},
 			ArgsUsage: "<Item ID>",
 		},
