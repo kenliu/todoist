@@ -120,9 +120,8 @@ func main() {
 		Usage: "section name",
 	}
 	descriptionFlag := cli.StringFlag{
-		Name:    "description",
-		Aliases: []string{"D"},
-		Usage:   "task description",
+		Name:  "description",
+		Usage: "task description",
 	}
 
 	app.Flags = []cli.Flag{
